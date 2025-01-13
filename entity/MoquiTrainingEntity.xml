@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-models xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-model.xsd">
+    <entity entity-name="MoquiTraining" package-name="moquitraining" is-view="false">
+        <field name="trainingId" type="id" primary-key="true" />
+        <field name="trainingName" type="text-long" />
+        <field name="trainingDate" type="date" />
+        <field name="trainingPrice" type="numeric" />
+        <field name="trainingDuration" type="number-integer" />
+    </entity>
+</entity-models>
