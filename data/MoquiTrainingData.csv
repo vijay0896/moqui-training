@@ -1,5 +1,5 @@
-moqui.exampleXMPL.ExampleXML,demo
+moqui.courses.Courses,demo
 trainingId,trainingName,trainingDate,trainingPrice,trainingDuration
-"1","ReactNative","2025-01-15 00:00:00","200.00","120"
-"3","React","2025-01-15 00:00:00","400.00","220"
+"4","JavaScrip","2024-01-01 00:00:00","150.00","120"
+"5","Node.js","2025-02-15 00:00:00","200.00","220"
 

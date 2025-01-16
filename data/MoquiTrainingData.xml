@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-facade-xml type="demo">
-    <moqui.exampleXMPL.ExampleXML trainingId="1" trainingName="ReactNative" trainingDate="2025-01-15" trainingPrice="200.00" trainingDuration="12" />
-    <moqui.exampleXMPL.ExampleXML trainingId="2" trainingName="ReactJs" trainingDate="2025-01-15" trainingPrice="300.00" trainingDuration="14" />
+    <moqui.courses.Courses trainingId="1" trainingName="ReactNative" trainingDate="2025-01-01" trainingPrice="200.00" trainingDuration="15" />
+    <moqui.courses.Courses trainingId="2" trainingName="ReactJs" trainingDate="2024-12-01" trainingPrice="300.00" trainingDuration="30" />
 </entity-facade-xml>

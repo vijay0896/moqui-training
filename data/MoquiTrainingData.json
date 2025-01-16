@@ -1,9 +1,9 @@
 [
   {
-    "_entity": "ExampleXML",
-    "trainingId": "4",
-    "trainingName": "c++",
-    "trainingDate": "2025-01-15",
+    "_entity": "Courses",
+    "trainingId": "3",
+    "trainingName": "D.S.A with C++",
+    "trainingDate": "2024-10-01",
     "trainingPrice": 600.00,
     "trainingDuration": 120
   }
