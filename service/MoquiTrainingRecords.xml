@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- fileName.verb.noun
+
+MoquiTrainingRecords.find#Courses -->
+
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
+    <!-- SELECT ENTITIES-->
+    <service verb="find" noun="Courses">
+        <in-parameters>
+            <parameter name="trainingName"/>
+            <parameter name="trainingId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingList" type="List">
+                <parameter name="trainingMap" type="Map">
+                    <parameter name="trainingId"/>
+                    <parameter name="trainingName"/>
+                    <parameter name="trainingDate"/>
+                </parameter>
+            </parameter>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="Courses" list="trainingList">
+                <econditions combine="or">
+                    <econdition field-name="trainingId" ignore-if-empty="true"/>
+                    <econdition field-name="trainingName" value="%${trainingName}%" ignore-case="true"/>
+                </econditions>
+                <select-field field-name="trainingId,trainingName,trainingDate"/>
+            </entity-find>
+        </actions>
+    </service>
+
+
+    <!-- UPDATE A SERVICE-->
+    <service verb="store" noun="Courses" type="inline">
+        <in-parameters>
+            <auto-parameters entity-name="org.moqui.courses.Courses" include="nonpk"/>
+            <parameter name="trainingName" />
+            <parameter name="trainingDate" type="Timestamp" format="MM/dd"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId"/>
+        </out-parameters>
+        <actions>
+            <!-- finding a  records -->
+            <entity-find entity-name="org.moqui.courses.Courses" list="trainingList">
+                <econdition field-name="trainingName" ignore-case="true"/>
+            </entity-find>
+
+            <!-- If a matching record exists, update it -->
+            <if condition="trainingList">
+                <then>
+                    <set field="training" from="trainingList.first"/>
+                    <entity-set value-field="training" map="context"/>
+                    <entity-update value-field="training"/>
+                    <set field="trainingId" from="training.trainingId"/>
+                </then>
+                <!-- If no matching record exists, create a new one -->
+                <else>
+                    <service-call name="create#org.moqui.courses.Courses" in-map="context" out-map="context"/>
+                </else>
+            </if>
+        </actions>
+    </service>
+</services>
+

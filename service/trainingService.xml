@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+    <service verb="create" noun="Courses" type="entity-auto">
+        <in-parameters>
+
+
+            <parameter name="trainingName" required="true"/>
+            <parameter name="trainingDate" required="true" format="MM/dd/yyyy"/>
+            <parameter name="trainingPrice" />
+            <parameter ame="trainingDuration" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId" required="true" />
+        </out-parameters>
+    </service>
+
+
+
+
+    <!--    Scripting Service-->
+
+
+    <service verb="create" noun="Courses" type="script" location="component://moqui-training/service/serviceGroovy.groovy">
+
+        <in-parameters>
+
+            <auto-parameters entity-name="Courses" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="Courses" include="pk" />
+        </out-parameters>
+    </service>
+
+    <!-- /// inline -->
+
+    <service verb="create" noun="Courses" type="inline">
+        <in-parameters>
+
+            <auto-parameters entity-name="org.moqui.courses.Courses" include="nonpk"/>
+            <parameter name="trainingName" required="true"/>
+            <parameter name="trainingDate" required="true" format="MM/dd/yyyy"/>
+            <parameter name="trainingPrice" />
+            <parameter ame="trainingDuration" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId" required="true" />
+        </out-parameters>
+        <actions>
+            <service-call name="create#Courses" in-map="context" out-map="context" />
+        </actions>
+    </service>
+</services>
+
+
