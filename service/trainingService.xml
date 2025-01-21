@@ -3,8 +3,6 @@
 <services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
     <service verb="create" noun="Courses" type="entity-auto">
         <in-parameters>
-
-
             <parameter name="trainingName" required="true"/>
             <parameter name="trainingDate" required="true" format="MM/dd/yyyy"/>
             <parameter name="trainingPrice" />
@@ -15,16 +13,10 @@
         </out-parameters>
     </service>
 
-
-
-
     <!--    Scripting Service-->
 
-
     <service verb="create" noun="Courses" type="script" location="component://moqui-training/service/serviceGroovy.groovy">
-
         <in-parameters>
-
             <auto-parameters entity-name="Courses" include="all"/>
         </in-parameters>
         <out-parameters>
@@ -36,7 +28,6 @@
 
     <service verb="create" noun="Courses" type="inline">
         <in-parameters>
-
             <auto-parameters entity-name="org.moqui.courses.Courses" include="nonpk"/>
             <parameter name="trainingName" required="true"/>
             <parameter name="trainingDate" required="true" format="MM/dd/yyyy"/>
